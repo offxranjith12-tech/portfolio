@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ranjith - Software Engineer Portfolio. Full Stack Developer specializing in Java, Spring Boot, React.js, Node.js, and modern web technologies.">
+    <meta name="keywords"
+        content="Ranjith, Software Engineer, Full Stack Developer, Java, Spring Boot, React, Portfolio">
+    <meta name="author" content="Ranjith">
+    <title>Ranjith | Software Engineer</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --dark-50: #1e293b;
+            --dark-500: #060912;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #060912;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #060912;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #2563eb);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #60a5fa, #3b82f6);
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #060912;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(59, 130, 246, 0.1);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #60a5fa;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Particle Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #818cf8, #60a5fa);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1rem;
+        }
+
+        .glass-card:hover {
+            background: rgba(15, 23, 42, 0.7);
+            border-color: rgba(59, 130, 246, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px -15px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Neon Glow */
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .neon-glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Profile Image Glow */
+        .profile-glow {
+            position: relative;
+        }
+
+        .profile-glow::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #3b82f6, #60a5fa, #818cf8, #3b82f6);
+            animation: rotate-border 3s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate-border {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Typing Cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #3b82f6;
+            margin-left: 4px;
+            animation: blink 0.8s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* Floating Animation */
+        .float { animation: floating 6s ease-in-out infinite; }
+        .float-delay { animation: floating 6s ease-in-out 2s infinite; }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Pulse Glow */
+        .pulse-glow { animation: pulse-glow-anim 2s ease-in-out infinite; }
+
+        @keyframes pulse-glow-anim {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), 0 0 60px rgba(59, 130, 246, 0.1); }
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+        }
+
+        /* Skill Bar */
+        .skill-bar {
+            position: relative;
+            height: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Timeline */
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #3b82f6, rgba(59, 130, 246, 0.1));
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 14px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 3px solid #060912;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            z-index: 1;
+        }
+
+        /* Nav Active */
+        .nav-link { position: relative; color: var(--slate-300) !important; }
+        .nav-link:hover { color: #fff !important; }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--primary-600);
+            color: #fff !important;
+            border-radius: 0.5rem;
+        }
+        .nav-cta:hover { background: var(--primary-500); }
+
+        /* Hero Glow Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .glow-orb-1 { width: 24rem; height: 24rem; background: rgba(37, 99, 235, 0.2); top: -10%; left: -10%; }
+        .glow-orb-2 { width: 20rem; height: 20rem; background: rgba(79, 70, 229, 0.15); bottom: -5%; right: -5%; }
+        .glow-orb-3 { width: 16rem; height: 16rem; background: rgba(59, 130, 246, 0.1); top: 40%; right: 20%; animation-delay: 1s; }
+
+        /* Card Hover Glow */
+        .card-hover-glow { position: relative; overflow: hidden; }
+
+        .card-hover-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .card-hover-glow:hover::before { opacity: 1; }
+
+        /* Scroll Down Indicator */
+        .scroll-indicator { animation: scroll-bounce 2s ease-in-out infinite; }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(12px); opacity: 0.5; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 280px;
+        }
+
+        .mobile-menu.open { transform: translateX(0); }
+
+        .mobile-nav-link { color: var(--slate-300); }
+        .mobile-nav-link:hover { color: #fff; background: rgba(59, 130, 246, 0.1); }
+
+        /* Back to Top */
+        #backToTop { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        #backToTop.visible { opacity: 1; visibility: visible; }
+
+        /* Form Focus */
+        .form-input:focus {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+            background: rgba(30, 41, 59, 0.5);
+            color: #fff;
+        }
+
+        .form-input {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            color: #fff;
+        }
+
+        .form-input::placeholder { color: var(--slate-500); }
+
+        /* Text helpers replacing Tailwind slate/blue text utilities */
+        .text-slate-300 { color: var(--slate-300) !important; }
+        .text-slate-400 { color: var(--slate-400) !important; }
+        .text-slate-500 { color: var(--slate-500) !important; }
+        .text-blue-300 { color: var(--primary-300) !important; }
+        .text-blue-400 { color: var(--primary-400) !important; }
+        .btn-primary-custom {
+            background: var(--primary-600);
+            border-color: var(--primary-600);
+            color: #fff;
+        }
+        .btn-primary-custom:hover {
+            background: var(--primary-500);
+            border-color: var(--primary-500);
+            color: #fff;
+        }
+        .btn-outline-custom {
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--primary-400);
+            background: transparent;
+        }
+        .btn-outline-custom:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+            color: #fff;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .icon-tile {
+            width: 44px;
+            height: 44px;
+            border-radius: 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-400);
+            transition: all 0.3s ease;
+        }
+        .icon-tile:hover { color: var(--primary-400); border: 1px solid rgba(59,130,246,0.3); }
+
+        .badge-soft {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            color: var(--primary-300);
+            transition: all 0.3s ease;
+        }
+        .badge-soft:hover { background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.3); }
+
+        .pill-tag {
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--primary-400);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .timeline-line { left: 16px; }
+            .timeline-dot { left: 10px; width: 12px; height: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-ring"></div>
+        <p class="loader-text">Loading</p>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-md fixed-top">
+        <div class="container">
+            <a href="#home" class="navbar-brand d-flex align-items-center gap-2">
+                <div class="d-flex align-items-center justify-content-center fw-bold text-white"
+                    style="width:80px;height:36px;border-radius:0.5rem;background:linear-gradient(135deg,#3b82f6,#1d4ed8);font-family:'Poppins',sans-serif;">
+                    RK
+                </div>
+            </a>
+
+            <button id="menuBtn" class="btn d-md-none border-0" aria-label="Toggle menu">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+
+            <!-- Desktop Nav -->
+            <div class="d-none d-md-flex align-items-center gap-1 ms-auto">
+                <a href="#home" class="nav-link px-3 py-2 fw-medium active">Home</a>
+                <a href="#about" class="nav-link px-3 py-2 fw-medium">About</a>
+                <a href="#skills" class="nav-link px-3 py-2 fw-medium">Skills</a>
+                <a href="#projects" class="nav-link px-3 py-2 fw-medium">Projects</a>
+                <a href="#education" class="nav-link px-3 py-2 fw-medium">Education</a>
+                <a href="#certifications" class="nav-link px-3 py-2 fw-medium">Certifications</a>
+                <a href="#experience" class="nav-link px-3 py-2 fw-medium">Experience</a>
+                <a href="#contact" class="nav-cta px-3 py-2 fw-medium">Contact</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu position-fixed top-0 end-0 h-100 glass d-md-none" style="z-index:1050;">
+            <div class="p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="fw-semibold text-white fs-5" style="font-family:'Poppins',sans-serif;">Menu</span>
+                    <button id="closeMenu" class="btn border-0 text-white">
+                        <i class="fas fa-times fs-5"></i>
+                    </button>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <a href="#home" class="mobile-nav-link px-3 py-2 rounded fw-medium">Home</a>
+                    <a href="#about" class="mobile-nav-link px-3 py-2 rounded fw-medium">About</a>
+                    <a href="#skills" class="mobile-nav-link px-3 py-2 rounded fw-medium">Skills</a>
+                    <a href="#projects" class="mobile-nav-link px-3 py-2 rounded fw-medium">Projects</a>
+                    <a href="#education" class="mobile-nav-link px-3 py-2 rounded fw-medium">Education</a>
+                    <a href="#certifications" class="mobile-nav-link px-3 py-2 rounded fw-medium">Certifications</a>
+                    <a href="#experience" class="mobile-nav-link px-3 py-2 rounded fw-medium">Experience</a>
+                    <a href="#contact" class="mobile-nav-link nav-cta px-3 py-2 rounded fw-medium text-center mt-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="position-fixed top-0 start-0 w-100 h-100 d-none" style="background:rgba(0,0,0,0.5); z-index:1040;"></div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="position-relative d-flex align-items-center justify-content-center overflow-hidden" style="min-height:100vh;">
+        <!-- Glow Orbs -->
+        <div class="glow-orb glow-orb-1 float"></div>
+        <div class="glow-orb glow-orb-2 float-delay"></div>
+        <div class="glow-orb glow-orb-3 float"></div>
+
+        <div class="container position-relative py-5 mt-4" style="z-index:1;">
+            <div class="row align-items-center g-5">
+                <!-- Left Content -->
+                <div class="col-lg-6 text-center text-lg-start order-2 order-lg-1">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill glass-card mb-4">
+                        <span class="rounded-circle bg-success" style="width:8px;height:8px;"></span>
+                        <span class="small text-slate-300 fw-medium">Available for opportunities</span>
+                    </div>
+
+                    <h1 class="fw-bold text-white display-4 display-lg-3 mb-3" style="line-height:1.15;">
+                        Hi, I'm<br>
+                        <span class="gradient-text">Ranjith Kumar</span>
+                    </h1>
+
+                    <div class="fs-3 fw-semibold text-slate-300 mb-4" style="height:2.5rem;font-family:'Poppins',sans-serif;">
+                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    </div>
+
+                    <p class="text-slate-400 fs-6 mb-4 mx-auto mx-lg-0" style="max-width:36rem;line-height:1.7;">
+                        Passionate Software Engineer focused on building scalable, secure, and modern web applications
+                        using Java, Spring Boot, React.js, Node.js, MongoDB, and MySQL.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
+                        <a href="resume/Ranjith_Kumar_R_Java_FullStack (1).pdf"
+                            download="Ranjith_Kumar_R_Java_FullStack (1).pdf"
+                            class="btn btn-primary-custom d-inline-flex align-items-center justify-content-center gap-2 px-4 py-3 rounded-3 fw-semibold">
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                        <a href="#contact"
+                            class="btn btn-outline-custom d-inline-flex align-items-center justify-content-center gap-2 px-4 py-3 rounded-3 fw-semibold">
+                            <i class="fas fa-paper-plane"></i>
+                            Hire Me
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="https://github.com/offxranjith12-tech" target="_blank" class="icon-tile rounded-3">
+                            <i class="fab fa-github fs-5"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/r-ranjith-kumar-036456334?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                            target="_blank" class="icon-tile rounded-3">
+                            <i class="fab fa-linkedin-in fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right - Profile Image -->
+                <div class="col-lg-6 d-flex justify-content-center order-1 order-lg-2">
+                    <div class="position-relative">
+                        <!-- Glow behind image -->
+                        <div class="position-absolute top-0 start-0 w-100 h-100 rounded-circle pulse-glow"
+                            style="background:rgba(59,130,246,0.2); filter:blur(60px); transform:scale(1.1);"></div>
+                        <!-- Profile Image -->
+                        <div class="profile-glow position-relative rounded-circle overflow-hidden"
+                            style="width:280px;height:280px;">
+                            <img src="./ME.jpeg" alt="Ranjith - Software Engineer"
+                                class="w-100 h-100 rounded-circle" style="object-fit:cover;">
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="position-absolute float rounded-3"
+                            style="top:-16px;right:-16px;width:32px;height:32px;background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.3);"></div>
+                        <div class="position-absolute float-delay rounded-circle"
+                            style="bottom:-8px;left:-24px;width:24px;height:24px;background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.3);"></div>
+                        <div class="position-absolute float rounded"
+                            style="top:50%;right:-40px;width:16px;height:16px;background:rgba(96,165,250,0.3);animation-delay:0.5s;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Down Indicator -->
+            <div class="position-absolute start-50 translate-middle-x scroll-indicator" style="bottom:2rem;">
+                <a href="#about" class="d-flex flex-column align-items-center gap-2 text-decoration-none"
+                    style="color:var(--slate-500);">
+                    <span class="small fw-medium text-uppercase" style="letter-spacing:0.2em;">Scroll Down</span>
+                    <i class="fas fa-chevron-down small"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">About Me</span>
+                <h2 class="fw-bold text-white display-5">
+                    Know Me <span class="gradient-text">Better</span>
+                </h2>
+            </div>
+
+            <div class="row g-4 g-lg-5 align-items-start">
+                <!-- Left - About Text -->
+                <div class="col-lg-6 reveal-left">
+                    <div class="glass-card card-hover-glow p-4 p-md-5">
+                        <h3 class="fw-semibold text-white fs-3 mb-3">Who Am I?</h3>
+                        <p class="text-slate-400 mb-4" style="line-height:1.7;">
+                            I am currently pursuing a Bachelor of Engineering (Honours) in Full Stack Development at VV
+                            College of Engineering. I am passionate about software engineering, full stack development,
+                            and building modern web applications. I enjoy solving real-world problems through technology
+                            and continuously improving my technical skills. My goal is to become a successful Software
+                            Engineer and Full Stack Developer.
+                        </p>
+
+                        <div class="row row-cols-1 row-cols-sm-2 g-3 mb-3">
+                            <div class="col d-flex align-items-center gap-3">
+                                <div class="icon-tile"><i class="fas fa-graduation-cap"></i></div>
+                                <div>
+                                    <p class="small text-slate-500 mb-0">College</p>
+                                    <p class="small text-white fw-medium mb-0">VV College of Engineering</p>
+                                </div>
+                            </div>
+                            <div class="col d-flex align-items-center gap-3">
+                                <div class="icon-tile"><i class="fas fa-code"></i></div>
+                                <div>
+                                    <p class="small text-slate-500 mb-0">Degree</p>
+                                    <p class="small text-white fw-medium mb-0">B.E CSE (Honours)</p>
+                                </div>
+                            </div>
+                            <div class="col d-flex align-items-center gap-3">
+                                <div class="icon-tile"><i class="fas fa-calendar"></i></div>
+                                <div>
+                                    <p class="small text-slate-500 mb-0">Duration</p>
+                                    <p class="small text-white fw-medium mb-0">2023 – 2027</p>
+                                </div>
+                            </div>
+                            <div class="col d-flex align-items-center gap-3">
+                                <div class="icon-tile"><i class="fas fa-star"></i></div>
+                                <div>
+                                    <p class="small text-slate-500 mb-0">CGPA</p>
+                                    <p class="small text-white fw-medium mb-0">8.5</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Strengths & Hobbies -->
+                <div class="col-lg-6 reveal-right d-flex flex-column gap-4">
+                    <!-- Strengths -->
+                    <div class="glass-card card-hover-glow p-4">
+                        <h3 class="fw-semibold text-white fs-4 mb-4 d-flex align-items-center gap-2">
+                            <i class="fas fa-bolt text-blue-400"></i> Strengths
+                        </h3>
+                        <div class="d-flex flex-wrap gap-3">
+                            <span class="badge-soft">Problem Solving</span>
+                            <span class="badge-soft">Quick Learner</span>
+                            <span class="badge-soft">Team Collaboration</span>
+                            <span class="badge-soft">Leadership</span>
+                            <span class="badge-soft">Self-Motivated</span>
+                            <span class="badge-soft">Adaptability</span>
+                        </div>
+                    </div>
+
+                    <!-- Hobbies -->
+                    <div class="glass-card card-hover-glow p-4">
+                        <h3 class="fw-semibold text-white fs-4 mb-4 d-flex align-items-center gap-2">
+                            <i class="fas fa-heart text-blue-400"></i> Hobbies
+                        </h3>
+                        <div class="row row-cols-2 g-3">
+                            <div class="col d-flex align-items-center gap-3 p-3 rounded-3"
+                                style="background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.1);">
+                                <i class="fas fa-code text-blue-400"></i>
+                                <span class="text-slate-300 small fw-medium">Coding</span>
+                            </div>
+                            <div class="col d-flex align-items-center gap-3 p-3 rounded-3"
+                                style="background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.1);">
+                                <i class="fas fa-laptop-code text-blue-400"></i>
+                                <span class="text-slate-300 small fw-medium">Learning Tech</span>
+                            </div>
+                            <div class="col d-flex align-items-center gap-3 p-3 rounded-3"
+                                style="background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.1);">
+                                <i class="fas fa-pencil-alt text-blue-400"></i>
+                                <span class="text-slate-300 small fw-medium">Gardening</span>
+                            </div>
+                            <div class="col d-flex align-items-center gap-3 p-3 rounded-3"
+                                style="background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.1);">
+                                <i class="fas fa-utensils text-blue-400"></i>
+                                <span class="text-slate-300 small fw-medium">Cooking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section id="skills" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Skills</span>
+                <h2 class="fw-bold text-white display-5">
+                    Technical <span class="gradient-text">Arsenal</span>
+                </h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Programming Languages -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.1s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-tile" style="width:48px;height:48px;"><i class="fas fa-code fs-5"></i></div>
+                            <h3 class="fw-semibold text-white fs-5 mb-0">Programming Languages</h3>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pill-tag" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);color:#fdba74;">Java</span>
+                            <span class="pill-tag" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.2);color:#fde047;">JavaScript</span>
+                            <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#86efac;">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Technologies -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.2s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-tile" style="width:48px;height:48px;"><i class="fab fa-react fs-5"></i></div>
+                            <h3 class="fw-semibold text-white fs-5 mb-0">Frontend</h3>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pill-tag" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);color:#fdba74;">HTML5</span>
+                            <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#93c5fd;">CSS3</span>
+                            <span class="pill-tag" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);color:#d8b4fe;">Bootstrap</span>
+                            <span class="pill-tag" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2);color:#67e8f9;">React.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Technologies -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.3s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-tile" style="width:48px;height:48px;"><i class="fas fa-server fs-5"></i></div>
+                            <h3 class="fw-semibold text-white fs-5 mb-0">Backend</h3>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pill-tag" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;">Java</span>
+                            <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#86efac;">Spring Boot</span>
+                            <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#86efac;">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.4s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-tile" style="width:48px;height:48px;"><i class="fas fa-database fs-5"></i></div>
+                            <h3 class="fw-semibold text-white fs-5 mb-0">Database</h3>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#86efac;">MongoDB</span>
+                            <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#93c5fd;">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.5s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-tile" style="width:48px;height:48px;"><i class="fas fa-tools fs-5"></i></div>
+                            <h3 class="fw-semibold text-white fs-5 mb-0">Tools</h3>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pill-tag" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);color:#fdba74;"><i class="fab fa-git-alt me-1"></i>Git</span>
+                            <span class="pill-tag" style="background:rgba(107,114,128,0.1);border:1px solid rgba(107,114,128,0.2);color:#d1d5db;"><i class="fab fa-github me-1"></i>GitHub</span>
+                            <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#93c5fd;"><i class="fas fa-code me-1"></i>VS Code</span>
+                            <span class="pill-tag" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);color:#fdba74;"><i class="fas fa-paper-plane me-1"></i>Postman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Technologies -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.6s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-tile" style="width:48px;height:48px;"><i class="fas fa-cogs fs-5"></i></div>
+                            <h3 class="fw-semibold text-white fs-5 mb-0">Other</h3>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#93c5fd;"><i class="fas fa-chart-bar me-1"></i>IBM Cognos Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Projects</span>
+                <h2 class="fw-bold text-white display-5">
+                    Featured <span class="gradient-text">Works</span>
+                </h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.1s;">
+                    <div class="glass-card card-hover-glow overflow-hidden h-100">
+                        <div class="overflow-hidden">
+                            <img src="https://static.vecteezy.com/system/resources/thumbnails/002/883/753/small/hr-management-recruitment-employment-and-headhunting-concept-photo.jpg"
+                                alt="Recruitment Management System" class="w-100" style="height:200px;object-fit:cover;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="fw-semibold text-white fs-5 mb-2">Hospital Management System</h3>
+                            <p class="text-slate-400 small mb-3" style="line-height:1.6;">A Hospital Management System that streamlines patient management, appointment scheduling, billing, medical records, and hospital administration through a secure role-based dashboard.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="pill-tag" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);color:#fca5a5;">Java</span>
+                                <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);color:#86efac;">REST APIs</span>
+                                <span class="pill-tag" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.15);color:#67e8f9;">Spring Boot</span>
+                                <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.15);color:#93c5fd;">MySQL</span>
+                                <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.15);color:#93c5fd;">React.js</span>
+                            </div>
+                            <a href="https://github.com/offxranjith12-tech/HOSPITAL-MANAGEMNT-SYS---TVK-INTERN" target="_blank"
+                                class="d-inline-flex align-items-center gap-2 small text-blue-400 fw-medium">
+                                <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right small"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.2s;">
+                    <div class="glass-card card-hover-glow overflow-hidden h-100">
+                        <div class="overflow-hidden">
+                            <img src="https://img.freepik.com/premium-photo/cyber-security-data-protection-concept-with-digital-lock-circuit-background_1363766-154.jpg"
+                                alt="Engagax with TrustGuard" class="w-100" style="height:200px;object-fit:cover;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="fw-semibold text-white fs-5 mb-2">Engagax with TrustGuard</h3>
+                            <p class="text-slate-400 small mb-3" style="line-height:1.6;">A customer engagement and trust
+                                management platform designed to improve user interactions, monitor trust metrics, and
+                                provide secure communication features.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="pill-tag" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.15);color:#67e8f9;">Java</span>
+                                <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);color:#86efac;">MySQL</span>
+                                <span class="pill-tag" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.15);color:#6ee7b7;">Spring boot</span>
+                            </div>
+                            <a href="[ADD_GITHUB_LINK]" target="_blank"
+                                class="d-inline-flex align-items-center gap-2 small text-blue-400 fw-medium">
+                                <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right small"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.3s;">
+                    <div class="glass-card card-hover-glow overflow-hidden h-100">
+                        <div class="overflow-hidden">
+                            <img src="https://www.shutterstock.com/image-vector/esim-technology-concept-featuring-3d-260nw-2700593661.jpg"
+                                alt="SIM Activation Portal" class="w-100" style="height:200px;object-fit:cover;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="fw-semibold text-white fs-5 mb-2">SIM Activation Portal</h3>
+                            <p class="text-slate-400 small mb-3" style="line-height:1.6;">A telecom service management system for
+                                SIM activation, customer verification, service provisioning, and secure user onboarding.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="pill-tag" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);color:#fca5a5;">Java</span>
+                                <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);color:#86efac;">Spring Boot</span>
+                                <span class="pill-tag" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.15);color:#fde047;">REST APIs</span>
+                                <span class="pill-tag" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.15);color:#93c5fd;">MySQL</span>
+                            </div>
+                            <a href="https://github.com/offxranjith12-tech/SIM---ACTIVATION" target="_blank"
+                                class="d-inline-flex align-items-center gap-2 small text-blue-400 fw-medium">
+                                <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right small"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== EDUCATION SECTION ==================== -->
+    <section id="education" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Education</span>
+                <h2 class="fw-bold text-white display-5">
+                    Academic <span class="gradient-text">Journey</span>
+                </h2>
+            </div>
+
+            <div class="mx-auto" style="max-width:48rem;">
+                <!-- Timeline -->
+                <div class="position-relative" style="padding-left:4rem;">
+                    <div class="timeline-line"></div>
+
+                    <!-- College -->
+                    <div class="position-relative mb-5 reveal">
+                        <div class="timeline-dot" style="top:8px;"></div>
+                        <div class="glass-card card-hover-glow p-4 p-md-5">
+                            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
+                                <div>
+                                    <span class="pill-tag d-inline-block mb-2" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--primary-400);">2023 – 2027</span>
+                                    <h3 class="fw-semibold text-white fs-4">VV College of Engineering</h3>
+                                </div>
+                                <div class="px-3 py-2 rounded-3" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
+                                    <span class="fw-bold small" style="color:#4ade80;">CGPA: 8.5</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 small mb-0">B.E Computer Science and Engineering (Honours in Full
+                                Stack Development)</p>
+                        </div>
+                    </div>
+
+                    <!-- HSC -->
+                    <div class="position-relative reveal" style="transition-delay:0.2s;">
+                        <div class="timeline-dot" style="top:8px;"></div>
+                        <div class="glass-card card-hover-glow p-4 p-md-5">
+                            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
+                                <div>
+                                    <span class="pill-tag d-inline-block mb-2" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--primary-400);">Higher Secondary</span>
+                                    <h3 class="fw-semibold text-white fs-4">Sema Kathar Meera Saibo Higher Secondary School</h3>
+                                </div>
+                                <div class="px-3 py-2 rounded-3" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
+                                    <span class="fw-bold small" style="color:#4ade80;">HSC: 84 %</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 small mb-0">Computer Science With Maths Group -Secure a 5 Rank In
+                                Public Exam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== CERTIFICATIONS SECTION ==================== -->
+    <section id="certifications" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Certifications</span>
+                <h2 class="fw-bold text-white display-5">
+                    Professional <span class="gradient-text">Credentials</span>
+                </h2>
+            </div>
+
+            <div class="row g-3">
+                <!-- Full Stack Development -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.05s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(34,197,94,0.1);color:#4ade80;"><i class="fas fa-laptop-code"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Full Stack Development</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Certification Program</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IBM Cognos Analytics -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.1s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0"><i class="fas fa-chart-bar"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">IBM Cognos Analytics</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">IBM Certification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication Skills Workshop -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.15s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(236,72,153,0.1);color:#f472b6;"><i class="fas fa-comments"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Communication Skills Workshop</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Professional Communication & Soft Skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Symposium Participation -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.25s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(99,102,241,0.1);color:#818cf8;"><i class="fas fa-users"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Symposium Participation</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Participation Certificates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workshop Participation -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.3s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(20,184,166,0.1);color:#2dd4bf;"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Workshop Participation</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Technical Workshops</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internship Completion -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.35s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(249,115,22,0.1);color:#fb923c;"><i class="fas fa-briefcase"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Internship Completion</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Internship Certificates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section id="experience" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Experience</span>
+                <h2 class="fw-bold text-white display-5">
+                    Work <span class="gradient-text">History</span>
+                </h2>
+            </div>
+
+            <div class="mx-auto" style="max-width:48rem;">
+                <div class="position-relative" style="padding-left:4rem;">
+                    <div class="timeline-line"></div>
+
+                    <!-- Experience 1 -->
+                    <div class="position-relative mb-5 reveal">
+                        <div class="timeline-dot" style="top:8px;"></div>
+                        <div class="glass-card card-hover-glow p-4 p-md-5">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-3"
+                                    style="width:56px;height:56px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);">
+                                    <i class="fas fa-building text-blue-400 fs-4"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-semibold text-white fs-4 mb-0">TVK Technologies</h3>
+                                    <p class="text-blue-400 fw-medium small mb-1">Software Development Intern</p>
+                                    <span class="pill-tag d-inline-block" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.15);color:var(--primary-300);">1 Month · Java</span>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-2">
+                                    <i class="fas fa-chevron-right text-primary" style="font-size:0.7rem;margin-top:0.3rem;"></i>
+                                    Developed software modules
+                                </li>
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-2">
+                                    <i class="fas fa-chevron-right text-primary" style="font-size:0.7rem;margin-top:0.3rem;"></i>
+                                    Participated in debugging and testing
+                                </li>
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-2">
+                                    <i class="fas fa-chevron-right text-primary" style="font-size:0.7rem;margin-top:0.3rem;"></i>
+                                    Worked on application development
+                                </li>
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-0">
+                                    <i class="fas fa-chevron-right text-primary" style="font-size:0.7rem;margin-top:0.3rem;"></i>
+                                    Collaborated with development teams
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="position-relative reveal" style="transition-delay:0.15s;">
+                        <div class="timeline-dot" style="top:8px;"></div>
+                        <div class="glass-card card-hover-glow p-4 p-md-5">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-3"
+                                    style="width:56px;height:56px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);">
+                                    <i class="fas fa-laptop-code fs-4" style="color:#c084fc;"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-semibold text-white fs-4 mb-0">
+                                        Adroit Technologies Innovative Solutions Pvt Ltd
+                                    </h3>
+                                    <p class="fw-medium small mb-1" style="color:#c084fc;">Data Analyst Intern</p>
+                                    <span class="pill-tag d-inline-block" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.15);color:#d8b4fe;">
+                                        1 Month · IBM Cognos Tool - Data visualization
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-2">
+                                    <i class="fas fa-chevron-right" style="font-size:0.7rem;margin-top:0.3rem;color:#c084fc;"></i>
+                                    To build interactive dashboards and reports on real-time data.
+                                </li>
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-2">
+                                    <i class="fas fa-chevron-right" style="font-size:0.7rem;margin-top:0.3rem;color:#c084fc;"></i>
+                                    Strengthened data analysis, problem-solving
+                                </li>
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-2">
+                                    <i class="fas fa-chevron-right" style="font-size:0.7rem;margin-top:0.3rem;color:#c084fc;"></i>
+                                    Understanding of structured (SQL) database systems.
+                                </li>
+                                <li class="d-flex align-items-start gap-2 text-slate-400 small mb-0">
+                                    <i class="fas fa-chevron-right" style="font-size:0.7rem;margin-top:0.3rem;color:#c084fc;"></i>
+                                    Improved Data visual and reporting
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Contact</span>
+                <h2 class="fw-bold text-white display-5">
+                    Get In <span class="gradient-text">Touch</span>
+                </h2>
+                <p class="text-slate-400 mt-3 mx-auto" style="max-width:32rem;">Feel free to reach out for collaborations,
+                    opportunities, or just a friendly chat!</p>
+            </div>
+
+            <div class="row g-4 g-lg-5">
+                <!-- Contact Info -->
+                <div class="col-lg-5 reveal-left d-flex flex-column gap-3">
+                    <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
+                        <div class="icon-tile flex-shrink-0"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">Phone</p>
+                            <p class="text-white fw-medium small mb-0">6382323556</p>
+                        </div>
+                    </div>
+                    <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
+                        <div class="icon-tile flex-shrink-0"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">Email</p>
+                            <p class="text-white fw-medium small mb-0">offxranjith12@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
+                        <div class="icon-tile flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">Location</p>
+                            <p class="text-white fw-medium small mb-0">LOCATION</p>
+                        </div>
+                    </div>
+                    <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
+                        <div class="icon-tile flex-shrink-0"><i class="fab fa-github"></i></div>
+                        <div>
+                            <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">GitHub</p>
+                            <a href="https://github.com/offxranjith12-tech" target="_blank"
+                                class="text-blue-400 fw-medium small">GITHUB</a>
+                        </div>
+                    </div>
+                    <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
+                        <div class="icon-tile flex-shrink-0"><i class="fab fa-linkedin-in"></i></div>
+                        <div>
+                            <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">LinkedIn</p>
+                            <a href="https://www.linkedin.com/in/r-ranjith-kumar-036456334" target="_blank"
+                                class="text-blue-400 fw-medium small">LINKEDIN</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-7 reveal-right">
+                    <form id="contactForm" class="glass-card card-hover-glow p-4 p-md-5">
+                        <div class="row g-3 mb-3">
+                            <div class="col-sm-6">
+                                <label class="form-label text-slate-400 text-uppercase small fw-medium" style="font-size:0.7rem;letter-spacing:0.1em;">Name</label>
+                                <input type="text" placeholder="Your Name" required
+                                    class="form-control form-input rounded-3 py-3">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label text-slate-400 text-uppercase small fw-medium" style="font-size:0.7rem;letter-spacing:0.1em;">Email</label>
+                                <input type="email" placeholder="Your Email" required
+                                    class="form-control form-input rounded-3 py-3">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-slate-400 text-uppercase small fw-medium" style="font-size:0.7rem;letter-spacing:0.1em;">Subject</label>
+                            <input type="text" placeholder="Subject" required
+                                class="form-control form-input rounded-3 py-3">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-slate-400 text-uppercase small fw-medium" style="font-size:0.7rem;letter-spacing:0.1em;">Message</label>
+                            <textarea rows="5" placeholder="Your Message" required
+                                class="form-control form-input rounded-3"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="btn btn-primary-custom w-100 w-sm-auto d-inline-flex align-items-center justify-content-center gap-2 px-4 py-3 rounded-3 fw-semibold">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                        <!-- Success Message -->
+                        <div id="formSuccess" class="d-none mt-3 p-3 rounded-3 text-center small fw-medium"
+                            style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#4ade80;">
+                            <i class="fas fa-check-circle me-2"></i> Message sent successfully! I'll get back to you
+                            soon.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="position-relative" style="border-top:1px solid rgba(30,41,59,0.5);">
+        <div class="container py-5">
+            <div class="text-center">
+                <!-- Name -->
+                <h3 class="fw-bold text-white fs-2 mb-2">Ranjith kumar R</h3>
+
+                <!-- Role -->
+                <p class="text-blue-400 fw-medium mb-4">Software Engineer</p>
+
+                <!-- Social Links -->
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    <a href="https://github.com/offxranjith12-tech" target="_blank" class="icon-tile rounded-3"
+                        style="background:rgba(30,41,59,0.5);border:1px solid rgba(51,65,85,0.5);">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/r-ranjith-kumar-036456334" target="_blank" class="icon-tile rounded-3"
+                        style="background:rgba(30,41,59,0.5);border:1px solid rgba(51,65,85,0.5);">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-slate-500 small mb-0">© 2027 Ranjith. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="btn btn-primary-custom position-fixed rounded-circle d-flex align-items-center justify-content-center"
+        style="bottom:2rem;right:2rem;width:48px;height:48px;z-index:1000;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ========== LOADING SCREEN ==========
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1200);
+        });
+
+        // ========== PARTICLE SYSTEM ==========
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a + 1; b < particles.length; b++) {
+                    const dx = particles[a].x - particles[b].x;
+                    const dy = particles[a].y - particles[b].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.06 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ========== TYPING EFFECT ==========
+        const typingElement = document.getElementById('typing-text');
+        const phrases = [
+            'Software Engineer',
+            'Full Stack Developer',
+            'Java Developer',
+            'MERN Stack Developer'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 80;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 40;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 80;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 400; // Pause before next
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
+        typeEffect();
+
+        // ========== NAVBAR ==========
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > 50) {
+                navbar.classList.add('glass');
+                navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.08)';
+            } else {
+                navbar.classList.remove('glass');
+                navbar.style.borderBottom = 'none';
+            }
+
+            lastScrollY = currentScrollY;
+        });
+
+        // ========== MOBILE MENU ==========
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            overlay.classList.remove('d-none');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            overlay.classList.add('d-none');
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // ========== ACTIVE NAV LINK ==========
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function setActiveNav() {
+            const scrollY = window.scrollY + 100;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+        window.addEventListener('scroll', setActiveNav);
+
+        // ========== SCROLL REVEAL ==========
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ========== SKILL BARS ==========
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-bar-fill');
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                }
+            });
+        }
+        window.addEventListener('scroll', animateSkillBars);
+        window.addEventListener('load', () => {
+            setTimeout(animateSkillBars, 500);
+        });
+
+        // ========== BACK TO TOP ==========
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== CONTACT FORM ==========
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate form submission
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin text-sm"></i> Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                formSuccess.classList.remove('d-none');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                contactForm.reset();
+
+                setTimeout(() => {
+                    formSuccess.classList.add('d-none');
+                }, 5000);
+            }, 1500);
+        });
+
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = target.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== RESIZE PARTICLES ON WINDOW RESIZE ==========
+        window.addEventListener('resize', () => {
+            initParticles();
+        });
+    </script>
+</body>
+</html>
