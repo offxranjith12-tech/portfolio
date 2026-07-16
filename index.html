@@ -373,16 +373,67 @@
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 280px;
+            z-index: 1050;
         }
 
         .mobile-menu.open { transform: translateX(0); }
 
-        .mobile-nav-link { color: var(--slate-300); }
-        .mobile-nav-link:hover { color: #fff; background: rgba(59, 130, 246, 0.1); }
+        .mobile-nav-link {
+            color: var(--slate-300);
+            display: block;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mobile-nav-link:hover {
+            color: #fff;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .mobile-nav-link.nav-cta {
+            background: var(--primary-600);
+            color: #fff !important;
+            text-align: center;
+        }
+
+        .mobile-nav-link.nav-cta:hover {
+            background: var(--primary-500);
+        }
+
+        /* Overlay */
+        #overlay {
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1040;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
 
         /* Back to Top */
-        #backToTop { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50% !important;
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* Form Focus */
         .form-input:focus {
@@ -512,37 +563,37 @@
                 <a href="#skills" class="nav-link px-3 py-2 fw-medium">Skills</a>
                 <a href="#projects" class="nav-link px-3 py-2 fw-medium">Projects</a>
                 <a href="#education" class="nav-link px-3 py-2 fw-medium">Education</a>
-                <a href="#certifications" class="nav-link px-3 py-2 fw-medium">Certifications</a>
                 <a href="#experience" class="nav-link px-3 py-2 fw-medium">Experience</a>
+                <a href="#certifications" class="nav-link px-3 py-2 fw-medium">Certifications</a>              
                 <a href="#contact" class="nav-cta px-3 py-2 fw-medium">Contact</a>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu position-fixed top-0 end-0 h-100 glass d-md-none" style="z-index:1050;">
-            <div class="p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <span class="fw-semibold text-white fs-5" style="font-family:'Poppins',sans-serif;">Menu</span>
-                    <button id="closeMenu" class="btn border-0 text-white">
-                        <i class="fas fa-times fs-5"></i>
-                    </button>
-                </div>
-                <div class="d-flex flex-column gap-1">
-                    <a href="#home" class="mobile-nav-link px-3 py-2 rounded fw-medium">Home</a>
-                    <a href="#about" class="mobile-nav-link px-3 py-2 rounded fw-medium">About</a>
-                    <a href="#skills" class="mobile-nav-link px-3 py-2 rounded fw-medium">Skills</a>
-                    <a href="#projects" class="mobile-nav-link px-3 py-2 rounded fw-medium">Projects</a>
-                    <a href="#education" class="mobile-nav-link px-3 py-2 rounded fw-medium">Education</a>
-                    <a href="#certifications" class="mobile-nav-link px-3 py-2 rounded fw-medium">Certifications</a>
-                    <a href="#experience" class="mobile-nav-link px-3 py-2 rounded fw-medium">Experience</a>
-                    <a href="#contact" class="mobile-nav-link nav-cta px-3 py-2 rounded fw-medium text-center mt-2">Contact</a>
-                </div>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu position-fixed top-0 end-0 h-100 glass">
+        <div class="p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="fw-semibold text-white fs-5" style="font-family:'Poppins',sans-serif;">Menu</span>
+                <button id="closeMenu" class="btn border-0 text-white">
+                    <i class="fas fa-times fs-5"></i>
+                </button>
+            </div>
+            <div class="d-flex flex-column gap-1">
+                <a href="#home" class="mobile-nav-link px-3 py-2 rounded fw-medium">Home</a>
+                <a href="#about" class="mobile-nav-link px-3 py-2 rounded fw-medium">About</a>
+                <a href="#skills" class="mobile-nav-link px-3 py-2 rounded fw-medium">Skills</a>
+                <a href="#projects" class="mobile-nav-link px-3 py-2 rounded fw-medium">Projects</a>
+                <a href="#education" class="mobile-nav-link px-3 py-2 rounded fw-medium">Education</a>
+                <a href="#experience" class="mobile-nav-link px-3 py-2 rounded fw-medium">Experience</a>
+                <a href="#certifications" class="mobile-nav-link px-3 py-2 rounded fw-medium">Certifications</a>
+                <a href="#contact" class="mobile-nav-link nav-cta px-3 py-2 rounded fw-medium text-center mt-2">Contact</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Overlay -->
-    <div id="overlay" class="position-fixed top-0 start-0 w-100 h-100 d-none" style="background:rgba(0,0,0,0.5); z-index:1040;"></div>
+    <div id="overlay" class="position-fixed top-0 start-0 w-100 h-100"></div>
 
     <!-- ==================== HERO SECTION ==================== -->
     <section id="home" class="position-relative d-flex align-items-center justify-content-center overflow-hidden" style="min-height:100vh;">
@@ -576,8 +627,7 @@
 
                     <!-- Buttons -->
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
-                        <a href="resume/Ranjith_Kumar_R_Java_FullStack (1).pdf"
-                            download="Ranjith_Kumar_R_Java_FullStack (1).pdf"
+                        <a href="#"
                             class="btn btn-primary-custom d-inline-flex align-items-center justify-content-center gap-2 px-4 py-3 rounded-3 fw-semibold">
                             <i class="fas fa-download"></i>
                             Download Resume
@@ -868,7 +918,7 @@
                 <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.1s;">
                     <div class="glass-card card-hover-glow overflow-hidden h-100">
                         <div class="overflow-hidden">
-                            <img src="https://static.vecteezy.com/system/resources/thumbnails/002/883/753/small/hr-management-recruitment-employment-and-headhunting-concept-photo.jpg"
+                            <img src="hos_images.jpg"
                                 alt="Recruitment Management System" class="w-100" style="height:200px;object-fit:cover;">
                         </div>
                         <div class="p-4">
@@ -893,20 +943,20 @@
                 <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.2s;">
                     <div class="glass-card card-hover-glow overflow-hidden h-100">
                         <div class="overflow-hidden">
-                            <img src="https://img.freepik.com/premium-photo/cyber-security-data-protection-concept-with-digital-lock-circuit-background_1363766-154.jpg"
+                            <img src="rec.jpg"
                                 alt="Engagax with TrustGuard" class="w-100" style="height:200px;object-fit:cover;">
                         </div>
                         <div class="p-4">
-                            <h3 class="fw-semibold text-white fs-5 mb-2">Engagax with TrustGuard</h3>
-                            <p class="text-slate-400 small mb-3" style="line-height:1.6;">A customer engagement and trust
-                                management platform designed to improve user interactions, monitor trust metrics, and
-                                provide secure communication features.</p>
+                            <h3 class="fw-semibold text-white fs-5 mb-2">Recruitment System</h3>
+                            <p class="text-slate-400 small mb-3" style="line-height:1.6;">Recruitment Management System is a web-based application that simplifies the hiring process by connecting job seekers and recruiters on a single platform. 
+The system is developed using HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB, providing a simple, user-friendly, and efficient recruitment experience.</p>
                             <div class="d-flex flex-wrap gap-2 mb-3">
-                                <span class="pill-tag" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.15);color:#67e8f9;">Java</span>
-                                <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);color:#86efac;">MySQL</span>
-                                <span class="pill-tag" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.15);color:#6ee7b7;">Spring boot</span>
+                                <span class="pill-tag" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.15);color:#67e8f9;">React.js</span>
+                                <span class="pill-tag" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);color:#86efac;">Express.js</span>
+                                <span class="pill-tag" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);color:#fca5a5;">Node.js</span>
+                                <span class="pill-tag" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.15);color:#6ee7b7;">MongoDB</span>
                             </div>
-                            <a href="[ADD_GITHUB_LINK]" target="_blank"
+                            <a href="https://github.com/offxranjith12-tech/RECRUITMENT-SYSTEM" target="_blank"
                                 class="d-inline-flex align-items-center gap-2 small text-blue-400 fw-medium">
                                 <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right small"></i>
                             </a>
@@ -918,7 +968,7 @@
                 <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.3s;">
                     <div class="glass-card card-hover-glow overflow-hidden h-100">
                         <div class="overflow-hidden">
-                            <img src="https://www.shutterstock.com/image-vector/esim-technology-concept-featuring-3d-260nw-2700593661.jpg"
+                            <img src="sim.webp"
                                 alt="SIM Activation Portal" class="w-100" style="height:200px;object-fit:cover;">
                         </div>
                         <div class="p-4">
@@ -988,10 +1038,10 @@
                                     <h3 class="fw-semibold text-white fs-4">Sema Kathar Meera Saibo Higher Secondary School</h3>
                                 </div>
                                 <div class="px-3 py-2 rounded-3" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
-                                    <span class="fw-bold small" style="color:#4ade80;">HSC: 84 %</span>
+                                    <span class="fw-bold small" style="color:#4ade80;">HSC: 84%</span>
                                 </div>
                             </div>
-                            <p class="text-slate-400 small mb-0">Computer Science With Maths Group -Secure a 5 Rank In
+                            <p class="text-slate-400 small mb-0">Computer Science With Maths Group - Secure a 5 Rank In
                                 Public Exam</p>
                         </div>
                     </div>
@@ -1002,102 +1052,8 @@
 
     <div class="section-divider mx-auto" style="max-width:64rem;"></div>
 
-    <!-- ==================== CERTIFICATIONS SECTION ==================== -->
-    <section id="certifications" class="position-relative py-5 my-4">
-        <div class="container">
-            <!-- Section Header -->
-            <div class="text-center mb-5 reveal">
-                <span class="eyebrow mb-3">Certifications</span>
-                <h2 class="fw-bold text-white display-5">
-                    Professional <span class="gradient-text">Credentials</span>
-                </h2>
-            </div>
 
-            <div class="row g-3">
-                <!-- Full Stack Development -->
-                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.05s;">
-                    <div class="glass-card card-hover-glow p-4 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="icon-tile flex-shrink-0" style="background:rgba(34,197,94,0.1);color:#4ade80;"><i class="fas fa-laptop-code"></i></div>
-                            <div>
-                                <h4 class="fw-semibold text-white small mb-1">Full Stack Development</h4>
-                                <p class="text-slate-500" style="font-size:0.75rem;">Certification Program</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IBM Cognos Analytics -->
-                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.1s;">
-                    <div class="glass-card card-hover-glow p-4 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="icon-tile flex-shrink-0"><i class="fas fa-chart-bar"></i></div>
-                            <div>
-                                <h4 class="fw-semibold text-white small mb-1">IBM Cognos Analytics</h4>
-                                <p class="text-slate-500" style="font-size:0.75rem;">IBM Certification</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Communication Skills Workshop -->
-                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.15s;">
-                    <div class="glass-card card-hover-glow p-4 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="icon-tile flex-shrink-0" style="background:rgba(236,72,153,0.1);color:#f472b6;"><i class="fas fa-comments"></i></div>
-                            <div>
-                                <h4 class="fw-semibold text-white small mb-1">Communication Skills Workshop</h4>
-                                <p class="text-slate-500" style="font-size:0.75rem;">Professional Communication & Soft Skills</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Symposium Participation -->
-                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.25s;">
-                    <div class="glass-card card-hover-glow p-4 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="icon-tile flex-shrink-0" style="background:rgba(99,102,241,0.1);color:#818cf8;"><i class="fas fa-users"></i></div>
-                            <div>
-                                <h4 class="fw-semibold text-white small mb-1">Symposium Participation</h4>
-                                <p class="text-slate-500" style="font-size:0.75rem;">Participation Certificates</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Workshop Participation -->
-                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.3s;">
-                    <div class="glass-card card-hover-glow p-4 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="icon-tile flex-shrink-0" style="background:rgba(20,184,166,0.1);color:#2dd4bf;"><i class="fas fa-chalkboard-teacher"></i></div>
-                            <div>
-                                <h4 class="fw-semibold text-white small mb-1">Workshop Participation</h4>
-                                <p class="text-slate-500" style="font-size:0.75rem;">Technical Workshops</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Internship Completion -->
-                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.35s;">
-                    <div class="glass-card card-hover-glow p-4 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="icon-tile flex-shrink-0" style="background:rgba(249,115,22,0.1);color:#fb923c;"><i class="fas fa-briefcase"></i></div>
-                            <div>
-                                <h4 class="fw-semibold text-white small mb-1">Internship Completion</h4>
-                                <p class="text-slate-500" style="font-size:0.75rem;">Internship Certificates</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
-
-    <!-- ==================== EXPERIENCE SECTION ==================== -->
+     <!-- ==================== EXPERIENCE SECTION ==================== -->
     <section id="experience" class="position-relative py-5 my-4">
         <div class="container">
             <!-- Section Header -->
@@ -1228,7 +1184,7 @@
                         <div class="icon-tile flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
                             <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">Location</p>
-                            <p class="text-white fw-medium small mb-0">LOCATION</p>
+                            <p class="text-white fw-medium small mb-0">Tamil Nadu, India</p>
                         </div>
                     </div>
                     <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
@@ -1236,7 +1192,7 @@
                         <div>
                             <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">GitHub</p>
                             <a href="https://github.com/offxranjith12-tech" target="_blank"
-                                class="text-blue-400 fw-medium small">GITHUB</a>
+                                class="text-blue-400 fw-medium small">GitHub</a>
                         </div>
                     </div>
                     <div class="glass-card card-hover-glow p-3 d-flex align-items-center gap-3">
@@ -1244,7 +1200,7 @@
                         <div>
                             <p class="text-slate-500 text-uppercase fw-medium mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">LinkedIn</p>
                             <a href="https://www.linkedin.com/in/r-ranjith-kumar-036456334" target="_blank"
-                                class="text-blue-400 fw-medium small">LINKEDIN</a>
+                                class="text-blue-400 fw-medium small">LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -1291,6 +1247,103 @@
         </div>
     </section>
 
+
+    <!-- ==================== CERTIFICATIONS SECTION ==================== -->
+    <section id="certifications" class="position-relative py-5 my-4">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5 reveal">
+                <span class="eyebrow mb-3">Certifications</span>
+                <h2 class="fw-bold text-white display-5">
+                    Professional <span class="gradient-text">Credentials</span>
+                </h2>
+            </div>
+
+            <div class="row g-3">
+                <!-- Full Stack Development -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.05s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(34,197,94,0.1);color:#4ade80;"><i class="fas fa-laptop-code"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Full Stack Development</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Certification Program</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IBM Cognos Analytics -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.1s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0"><i class="fas fa-chart-bar"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">IBM Cognos Analytics</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">IBM Certification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication Skills Workshop -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.15s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(236,72,153,0.1);color:#f472b6;"><i class="fas fa-comments"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Communication Skills Workshop</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Professional Communication & Soft Skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Symposium Participation -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.25s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(99,102,241,0.1);color:#818cf8;"><i class="fas fa-users"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Symposium Participation</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Participation Certificates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workshop Participation -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.3s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(20,184,166,0.1);color:#2dd4bf;"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Workshop Participation</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Technical Workshops</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internship Completion -->
+                <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:0.35s;">
+                    <div class="glass-card card-hover-glow p-4 h-100">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-tile flex-shrink-0" style="background:rgba(249,115,22,0.1);color:#fb923c;"><i class="fas fa-briefcase"></i></div>
+                            <div>
+                                <h4 class="fw-semibold text-white small mb-1">Internship Completion</h4>
+                                <p class="text-slate-500" style="font-size:0.75rem;">Internship Certificates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider mx-auto" style="max-width:64rem;"></div>
+
+   
     <!-- ==================== FOOTER ==================== -->
     <footer class="position-relative" style="border-top:1px solid rgba(30,41,59,0.5);">
         <div class="container py-5">
@@ -1320,8 +1373,7 @@
     </footer>
 
     <!-- Back to Top -->
-    <button id="backToTop" class="btn btn-primary-custom position-fixed rounded-circle d-flex align-items-center justify-content-center"
-        style="bottom:2rem;right:2rem;width:48px;height:48px;z-index:1000;">
+    <button id="backToTop" class="btn btn-primary-custom position-fixed d-flex align-items-center justify-content-center">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -1449,11 +1501,11 @@
 
             if (!isDeleting && charIndex === currentPhrase.length) {
                 isDeleting = true;
-                typingSpeed = 2000; // Pause at end
+                typingSpeed = 2000;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 400; // Pause before next
+                typingSpeed = 400;
             }
 
             setTimeout(typeEffect, typingSpeed);
@@ -1487,22 +1539,40 @@
 
         function openMenu() {
             mobileMenu.classList.add('open');
-            overlay.classList.remove('d-none');
+            overlay.classList.add('show');
             document.body.style.overflow = 'hidden';
         }
 
         function closeMenu() {
             mobileMenu.classList.remove('open');
-            overlay.classList.add('d-none');
+            overlay.classList.remove('show');
             document.body.style.overflow = '';
         }
+
+        // Mobile nav links - close menu AND scroll to section
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    closeMenu();
+
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 150);
+                }
+            });
+        });
 
         menuBtn.addEventListener('click', openMenu);
         closeMenuBtn.addEventListener('click', closeMenu);
         overlay.addEventListener('click', closeMenu);
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
 
         // ========== ACTIVE NAV LINK ==========
         const sections = document.querySelectorAll('section[id]');
@@ -1527,52 +1597,26 @@
         }
         window.addEventListener('scroll', setActiveNav);
 
-        // ========== SCROLL REVEAL ==========
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                const revealPoint = 100;
-
-                if (elementTop < windowHeight - revealPoint) {
-                    el.classList.add('active');
-                }
-            });
-        }
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-
-        // ========== SKILL BARS ==========
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-bar-fill');
-            skillBars.forEach(bar => {
-                const rect = bar.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 50) {
-                    const width = bar.getAttribute('data-width');
-                    bar.style.width = width + '%';
-                }
-            });
-        }
-        window.addEventListener('scroll', animateSkillBars);
-        window.addEventListener('load', () => {
-            setTimeout(animateSkillBars, 500);
-        });
-
         // ========== BACK TO TOP ==========
         const backToTopBtn = document.getElementById('backToTop');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
         });
 
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
+
+        // ========== INITIAL ACTIVE STATE ==========
+        setActiveNav();
 
         // ========== CONTACT FORM ==========
         const contactForm = document.getElementById('contactForm');
@@ -1580,10 +1624,9 @@
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulate form submission
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin text-sm"></i> Sending...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
             setTimeout(() => {
@@ -1598,25 +1641,21 @@
             }, 1500);
         });
 
-        // ========== SMOOTH SCROLL ==========
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80;
-                    const bodyRect = document.body.getBoundingClientRect().top;
-                    const elementRect = target.getBoundingClientRect().top;
-                    const elementPosition = elementRect - bodyRect;
-                    const offsetPosition = elementPosition - offset;
+        // ========== SCROLL REVEAL ==========
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight - 80) {
+                    el.classList.add('active');
                 }
             });
-        });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
 
         // ========== RESIZE PARTICLES ON WINDOW RESIZE ==========
         window.addEventListener('resize', () => {
